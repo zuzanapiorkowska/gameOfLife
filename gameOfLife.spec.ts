@@ -39,10 +39,15 @@ describe("Game Of Life", () => {
           const cell = new Cell(1, 0);
           expect(cell.getState()).toEqual(0);
       });
-      it("cell stays alive when has 3 neighbours", ()=> {
+      it("alive cell stays alive when has 3 neighbours", ()=> {
           //when 
-          const cell = new Cell(1, 0);
-          expect(cell.getState()).toEqual(0);
+          const cell = new Cell(1, 3);
+          expect(cell.getState()).toEqual(1);
+      });
+      it("alive cell stays alive when has 2 neighbours", ()=> {
+          //when 
+          const cell = new Cell(1, 2)
+          expect(cell.getState()).toEqual(1);
       });
   })
 });
