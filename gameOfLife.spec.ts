@@ -43,6 +43,70 @@ describe("Game Of Life", () => {
       //then
       expect(board.tick()).toEqual(after);
     });
+    it("keeps alive cells, that have 3 neighbours", () => {
+      //given
+      const before: (0 | 1)[][] = [
+        [1, 0, 0],
+        [0, 1, 1],
+        [0, 0, 1],
+      ];
+      const after: (0 | 1)[][] = [
+        [0, 1, 0],
+        [0, 1, 1],
+        [0, 1, 1],
+      ];
+      //when
+      const board = new Board(before);
+      //then
+      expect(board.tick()).toEqual(after);
+    });
+    it("make alive dead cells, that have 3 neighbours", () => {
+      //given
+      const before: (0 | 1)[][] = [
+        [1, 0, 1],
+        [0, 1, 0],
+        [0, 0, 0],
+      ];
+      const after: (0 | 1)[][] = [
+        [0, 1, 0],
+        [0, 1, 0],
+        [0, 0, 0],
+      ];
+      //when
+      const board = new Board(before);
+      //then
+      expect(board.tick()).toEqual(after);
+    });
+    it("kills alive cells, that have less than 2 neighbours", () => {
+      //given
+      const before: (0 | 1)[][] = [
+        [1, 1, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+      ];
+      //when
+      const board = new Board(before);
+      //then
+      expect(board.tick()).toEqual(boardOfDeads);
+    });
+  });
+    it("kills cells, that have more than 3 neighbours", () => {
+      //given
+      const before: (0 | 1)[][] = [
+        [1, 1, 1],
+        [0, 1, 1],
+        [0, 0, 0],
+      ];
+      const after: (0 | 1)[][] = [
+        [1, 0, 1],
+        [1, 0, 1],
+        [0, 0, 0],
+      ];
+      //when
+      const board = new Board(before);
+      //then
+      expect(board.tick()).toEqual(after);
+    });
   });
 
   describe(Cell.name, ()=> {
@@ -81,5 +145,4 @@ describe("Game Of Life", () => {
           const cell = new Cell(1, 1)
           expect(cell.setNextState()).toEqual(0);
       });
-  })
-});
+  });
