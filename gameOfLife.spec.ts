@@ -33,6 +33,11 @@ describe("Game Of Life", () => {
           //when 
           const cell = new Cell(1, 0);
           expect(cell.getState()).toEqual(0);
-      })
+      });
+      it("alive cell dies when has no neighbours", ()=> {
+          //when 
+          const cell = new Cell(1, 0);
+          expect(cell.getState()).toEqual(0);
+      });
   })
 });
