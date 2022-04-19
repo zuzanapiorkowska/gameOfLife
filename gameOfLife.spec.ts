@@ -26,33 +26,60 @@ describe("Game Of Life", () => {
       //then
       expect(board.tick()).toEqual(boardOfDeads);
     });
+    it("keeps alive cells, that have 2 neighbours", () => {
+      //given
+      const before: (0 | 1)[][] = [
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1],
+      ];
+      const after: (0 | 1)[][] = [
+        [0, 0, 0],
+        [0, 1, 0],
+        [0, 0, 0],
+      ];
+      //when
+      const board = new Board(before);
+      //then
+      expect(board.tick()).toEqual(after);
+    });
   });
 
   describe(Cell.name, ()=> {
       it("alive cell dies when has no neighbours", ()=> {
           //when 
           const cell = new Cell(1, 0);
-          expect(cell.getState()).toEqual(0);
+          expect(cell.setNextState()).toEqual(0);
       });
       it("alive cell dies when has no neighbours", ()=> {
           //when 
           const cell = new Cell(1, 0);
-          expect(cell.getState()).toEqual(0);
+          expect(cell.setNextState()).toEqual(0);
       });
       it("alive cell stays alive when has 3 neighbours", ()=> {
           //when 
           const cell = new Cell(1, 3);
-          expect(cell.getState()).toEqual(1);
+          expect(cell.setNextState()).toEqual(1);
       });
       it("alive cell stays alive when has 2 neighbours", ()=> {
           //when 
           const cell = new Cell(1, 2)
-          expect(cell.getState()).toEqual(1);
+          expect(cell.setNextState()).toEqual(1);
       });
       it("dead cell stays dead when has 2 neighbours", ()=> {
           //when 
           const cell = new Cell(0, 2)
-          expect(cell.getState()).toEqual(0);
+          expect(cell.setNextState()).toEqual(0);
+      });
+      it("dead cell becomes alive when has 3 neighbours", ()=> {
+          //when 
+          const cell = new Cell(0, 3)
+          expect(cell.setNextState()).toEqual(1);
+      });
+      it("alive cell dies when has less than 2 neighbors", ()=> {
+          //when 
+          const cell = new Cell(1, 1)
+          expect(cell.setNextState()).toEqual(0);
       });
   })
 });
