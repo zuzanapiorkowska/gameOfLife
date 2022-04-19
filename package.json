@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "typescript": "^4.6.3"
+  },
+  "name": "gameoflife",
+  "version": "1.0.0",
+  "main": "jest.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuzanapiorkowska/gameOfLife.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zuzanapiorkowska/gameOfLife/issues"
+  },
+  "homepage": "https://github.com/zuzanapiorkowska/gameOfLife#readme",
+  "description": "",
+  "dependencies": {
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0"
+  }
+}
