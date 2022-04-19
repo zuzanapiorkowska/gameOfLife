@@ -49,5 +49,10 @@ describe("Game Of Life", () => {
           const cell = new Cell(1, 2)
           expect(cell.getState()).toEqual(1);
       });
+      it("dead cell stays dead when has 2 neighbours", ()=> {
+          //when 
+          const cell = new Cell(0, 2)
+          expect(cell.getState()).toEqual(0);
+      });
   })
 });
